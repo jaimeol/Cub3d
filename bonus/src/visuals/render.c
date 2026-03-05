@@ -87,6 +87,10 @@ void	render(t_game *game, float dist)
 	game->vars.projected_height = (int)((BLOCK_SIZE / dist) * (WIDTH / 2));
 	start_y = game->vars.center_y - game->vars.projected_height / 2;
 	end = game->vars.center_y + game->vars.projected_height / 2;
+	if (start_y < 0)
+		start_y = 0;
+	if (end > HEIGHT)
+		end = HEIGHT;
 	wall_pos = calculate_wall_pos(game);
 	game->texture_x = (int)(wall_pos / BLOCK_SIZE * TEXTURE_WIDTH);
 	if (game->orientation == 4)
